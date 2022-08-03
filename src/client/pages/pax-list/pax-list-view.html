@@ -1,0 +1,68 @@
+<div class="pax-list p-5">
+
+    <h1 class="title">
+        Pax List
+    </h1>
+
+    <nav class="level">
+        <div class="level-left">
+            <div class="level-item">
+                <p class="control">
+                    <input class="input" type="text" placeholder="Search by name" v-model="nameFilter">
+                </p>
+                <div class="level-item ml-4">
+                    <div class="select">
+                        <select v-model="countryFilter">
+                            <option :value="null">All countries</option>
+                            <option value="Canada">Canada</option>
+                            <option value="United States">United States</option>
+                            <option value="Mexico">Mexico</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="level-right mr-2">
+            <div v-if="selectedCount > 0" class="level-item ml-4">
+                <p>
+                    <button class="button is-outlined is-danger" @click="deleteSelectedPaxes">
+                        Delete ({{selectedCount}})
+                    </button>
+                </p>
+            </div>
+            <div class="level-item">
+                <p>
+                    <button class="button is-outlined is-primary" @click="addPax">
+                        Add Pax
+                    </button>
+                </p>
+            </div>
+        </div>
+    </nav>
+
+    <div class="is-flex is-flex-direction-column is-align-items-center">
+        <table class="table is-fullwidth">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Country</th>
+                    <th>Requires Assistance</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <pax-table-row :key="pax.pax.id" :selectable-pax="pax" @manage-pax="managePax" @delete-pax="deletePax"
+                    v-for="pax of filteredPaxes">
+                </pax-table-row>
+            </tbody>
+        </table>
+    </div>
+
+</div>

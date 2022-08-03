@@ -1,0 +1,80 @@
+<div class="manage-pax p-5">
+    <div v-if="pax != null">
+
+        <h1 class="title">
+            {{ isNewPax ? "Add PAX" : "Update PAX"}}
+        </h1>
+
+
+        <div class="field">
+            <label class="label">First Name</label>
+            <div class="control">
+                <input class="input" type="text" v-model="pax.firstName" placeholder="First Name"
+                    :class="{'is-danger': errors.pax && errors.pax.firstName }">
+            </div>
+            <p class="help is-danger">{{ errors.pax && errors.pax.firstName}}</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Last Name</label>
+            <div class="control">
+                <input class="input" type="text" v-model="pax.lastName" placeholder="Last Name"
+                    :class="{'is-danger': errors.pax && errors.pax.lastName }">
+            </div>
+            <p class="help is-danger">{{ errors.pax && errors.pax.lastName}}</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Age</label>
+            <div class="control">
+                <input class="input" type="number" v-model.number="pax.age" placeholder="Age"
+                    :class="{'is-danger': errors.pax && errors.pax.age }" min="1" max="100">
+            </div>
+            <p class="help is-danger">{{ errors.pax && errors.pax.age}}</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+                <input class="input" type="email" v-model.number="pax.email" placeholder="Email"
+                    :class="{'is-danger': errors.pax && errors.pax.email }">
+            </div>
+            <p class="help is-danger">{{ errors.pax && errors.pax.email}}</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Phone Number</label>
+            <div class="control">
+                <input class="input" type="tel" v-model="pax.phoneNumber" placeholder="Phone"
+                    :class="{'is-danger': errors.pax && errors.pax.phoneNumber }" :step="1.0">
+            </div>
+            <p class="help is-danger">{{ errors.pax && errors.pax.phoneNumber}}</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Country</label>
+            <div class="control">
+                <div class="select" :class="{'is-danger': errors.pax && errors.pax.country }">
+                    <select v-model="pax.country">
+                        <option disabled value="">Please Select</option>
+                        <option value="Canada">Canada</option>
+                        <option value="United States">United States</option>
+                        <option value="Mexico">Mexico</option>
+                    </select>
+                </div>
+            </div>
+            <p class="help is-danger">{{ errors.pax && errors.pax.country}}</p>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <label class="checkbox" :class="{'is-danger': errors.pax && errors.pax.requiresAssistance }">
+                    <input type="checkbox" v-model="pax.requiresAssistance">
+                    Requires Assistance
+                </label>
+            </div>
+        </div>
+
+        <button class="button is-link" @click="submit" :disabled="hasErrors">Submit</button>
+    </div>
+</div>

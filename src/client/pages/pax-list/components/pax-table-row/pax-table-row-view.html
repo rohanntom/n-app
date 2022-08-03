@@ -1,0 +1,21 @@
+<tr class="pax-table-row">
+    <td>
+        <el-check-box :value="isSelected"></el-check-box>
+    </td>
+    <td>{{pax.firstName}}</td>
+    <td>{{pax.lastName}}</td>
+    <td>{{pax.age}}</td>
+    <td>{{pax.email}}</td>
+    <td>{{pax.phoneNumber || "N/A" }}</td>
+    <td>{{pax.country}}</td>
+    <td>{{ pax.requiresAssistance ? "Yes" : "No" }}</td>
+    <td>
+        <button class="button is-link is-outlined is-small" @click="managePax">
+            Edit
+        </button>
+
+        <button class="ml-2 button is-danger is-outlined is-small" @click="deletePax">
+            Delete
+        </button>
+    </td>
+</tr>

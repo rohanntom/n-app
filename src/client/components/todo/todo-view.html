@@ -1,0 +1,25 @@
+<div class="todo-view">
+    <div class="card">
+        <header class="card-header">
+            <p class="card-header-title">
+                {{todoValue.title}}
+            </p>
+            <div v-show="todoValue.isCompleted" class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                    <i class="material-icons">done</i>
+                </span>
+            </div>
+        </header>
+        <div class="card-content">
+            <div class="content">
+                {{todoValue.description}}
+            </div>
+        </div>
+        <footer class="card-footer">
+            <a v-show="!todoValue.isCompleted" href="#" class="card-footer-item"
+                v-on:click.prevent="completeTodo">Complete</a>
+            <a href="#" class="card-footer-item" v-on:click.prevent="editTodo">Edit</a>
+            <a href="#" class="card-footer-item" v-on:click.prevent="deleteTodo">Delete</a>
+        </footer>
+    </div>
+</div>
